@@ -20,4 +20,14 @@ Explanation: In this case, no transactions are done and the max profit = 0.
 The idea is to <u>track the minimum price so far while traversing the array and calculate the profit if we sold today.</u> This way, we can constantly update the maximum profit without using nested loops.
 
 ```java
+private int getMaxProfit(int[] prices) {
+    int currMinPrice = prices[0];
+    int maxProfit = 0;
+    int len = prices.length;
+    for(int i = 1; i < len; i++) {
+        if (currMinPrice > prices[i]) currMinPrice = prices[i];
+        maxProfit = maxProfit < (prices[i] - currMinPrice) ? (prices[i] - currMinPrice) : maxProfit;
+    }
+    return maxProfit;
+}
 ````
